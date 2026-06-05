@@ -34,6 +34,14 @@
 4. Expand observability and operational safeguards for API failures and schema changes.
 5. Add CI guardrails to run frontend lint/tests and backend tests on every change.
 
+## Skill application log
+- Applied additional skill: accessibility.
+- Justification: this financial dashboard is chart-heavy and KPI-centric, so assistive feedback during loading and API errors is critical for non-visual users and keyboard-first navigation.
+- Changes implemented in frontend entry flow:
+  - Added a polite loading status announcement for screen readers.
+  - Marked KPI and chart sections with aria-busy while data is loading.
+  - Marked API error container as role="alert" with assertive live region.
+
 ## Evidence
 - API routes and business logic: backend/app/routes.py.
 - API app setup: backend/app/main.py.
