@@ -7,15 +7,20 @@ This file defines how AI agents should read project context and apply repository
 ## Required reading order
 
 1. `AGENTS.md`
-2. `context.md`
-3. `README.md` or `README.es.md`
-4. `design.md`
-5. `engineering-analysis.md`
-6. Applicable files in `.agents/rules/`
-7. In Phase 4, the documents in `memory-bank/` (when they are created)
+2. `memory-bank/current-status.md`
+3. `memory-bank/product-overview.md`
+4. `memory-bank/tech-stack.md`
+5. `context.md`
+6. `README.md` or `README.es.md`
+7. `design.md`
+8. `engineering-analysis.md`
+9. Applicable files in `.agents/rules/`
 
 ## Rule index
 
+- [memory-bank/current-status.md](memory-bank/current-status.md): Operational snapshot with date, commit context, validation outcomes, and current warnings/risks.
+- [memory-bank/product-overview.md](memory-bank/product-overview.md): Stable summary of product purpose, current capabilities, and scope boundaries.
+- [memory-bank/tech-stack.md](memory-bank/tech-stack.md): Verified stack, versions, infrastructure, and key technical constraints.
 - [.agents/rules/quality-gates.md](.agents/rules/quality-gates.md): Minimum validation gates and reporting requirements before completing changes.
 - [.agents/rules/frontend.md](.agents/rules/frontend.md): Frontend-specific guardrails for TypeScript, calculations, UI states, and build validation.
 - [.agents/rules/backend-api.md](.agents/rules/backend-api.md): Backend API contract, testing, and compatibility rules.
