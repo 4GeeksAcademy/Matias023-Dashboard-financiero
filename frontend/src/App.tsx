@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 import { KPIRow } from "@/components/dashboard/kpi-row";
-import { IncomeOutcomeChart } from "@/components/dashboard/income-outcome-chart";
-import { ProfitPercentChart } from "@/components/dashboard/profit-percent-chart";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+} from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   type FinancialMovement,
   type KPIMetrics,
@@ -10,7 +14,37 @@ import {
 } from "@/lib/financial-types";
 import { computeKPIs, computeMonthlyData } from "@/lib/financial-utils";
 
+const IncomeOutcomeChart = lazy(async () => {
+  const module = await import("@/components/dashboard/income-outcome-chart");
+  return { default: module.IncomeOutcomeChart };
+});
+
+const ProfitPercentChart = lazy(async () => {
+  const module = await import("@/components/dashboard/profit-percent-chart");
+  return { default: module.ProfitPercentChart };
+});
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "";
+
+function ChartLoadingFallback({ label }: { label: string }) {
+  return (
+    <Card
+      className="border-border/60"
+      role="status"
+      aria-live="polite"
+      aria-label={`Loading ${label}`}
+    >
+      <CardHeader className="pb-4">
+        <Skeleton className="h-5 w-52" />
+        <Skeleton className="mt-1 h-3 w-64" />
+      </CardHeader>
+      <CardContent>
+        <span className="sr-only">Loading {label}</span>
+        <Skeleton className="h-[280px] w-full rounded-lg" />
+      </CardContent>
+    </Card>
+  );
+}
 
 async function fetchFinancialData(
   signal?: AbortSignal,
@@ -90,8 +124,16 @@ function App() {
             aria-busy={loading}
             className="grid grid-cols-1 gap-4 xl:grid-cols-2"
           >
-            <IncomeOutcomeChart data={monthlyData} loading={loading} />
-            <ProfitPercentChart data={monthlyData} loading={loading} />
+            <Suspense
+              fallback={<ChartLoadingFallback label="income versus outcome chart" />}
+            >
+              <IncomeOutcomeChart data={monthlyData} loading={loading} />
+            </Suspense>
+            <Suspense
+              fallback={<ChartLoadingFallback label="profit margin chart" />}
+            >
+              <ProfitPercentChart data={monthlyData} loading={loading} />
+            </Suspense>
           </section>
         </div>
       </div>
