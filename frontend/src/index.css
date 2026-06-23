@@ -123,3 +123,9 @@ body,
 #root {
   min-height: 100%;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-pulse {
+    animation: none !important;
+  }
+}
