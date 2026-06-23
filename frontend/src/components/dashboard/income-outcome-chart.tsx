@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Skeleton } from '@/components/ui/skeleton'
 import { type MonthlyDataPoint } from '@/lib/financial-types'
 import { formatCurrency } from '@/lib/financial-utils'
+import { useId } from 'react'
 import {
   LineChart,
   Line,
@@ -47,9 +48,18 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
 }
 
 export function IncomeOutcomeChart({ data, loading }: IncomeOutcomeChartProps) {
+  const titleId = useId()
+  const descriptionId = useId()
+  const summaryId = useId()
+
   if (loading) {
     return (
-      <Card className="border-border/60">
+      <Card
+        className="border-border/60"
+        role="status"
+        aria-live="polite"
+        aria-label="Loading income versus outcome chart"
+      >
         <CardHeader className="pb-4">
           <Skeleton className="h-5 w-52" />
           <Skeleton className="h-3 w-64 mt-1" />
@@ -64,14 +74,28 @@ export function IncomeOutcomeChart({ data, loading }: IncomeOutcomeChartProps) {
   const hasData = data.some((d) => d.income > 0 || d.outcome > 0)
 
   return (
-    <Card className="border-border/60">
+    <Card
+      className="border-border/60"
+      role="region"
+      aria-labelledby={titleId}
+      aria-describedby={`${descriptionId} ${summaryId}`}
+    >
       <CardHeader className="pb-4">
-        <CardTitle className="text-base font-semibold">Income vs. Outcome</CardTitle>
-        <CardDescription>Monthly revenue and expenditure evolution</CardDescription>
+        <CardTitle id={titleId} className="text-base font-semibold">
+          Income vs. Outcome
+        </CardTitle>
+        <CardDescription id={descriptionId}>Monthly revenue and expenditure evolution</CardDescription>
       </CardHeader>
       <CardContent>
+        <p id={summaryId} className="sr-only">
+          Line chart comparing monthly income and monthly outcome across the available period.
+        </p>
         {!hasData ? (
-          <div className="flex h-[280px] items-center justify-center text-muted-foreground text-sm">
+          <div
+            className="flex h-[280px] items-center justify-center text-muted-foreground text-sm"
+            role="status"
+            aria-live="polite"
+          >
             No data available to display
           </div>
         ) : (
