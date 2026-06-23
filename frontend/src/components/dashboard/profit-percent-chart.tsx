@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { type MonthlyDataPoint } from '@/lib/financial-types'
+import { useId } from 'react'
 import {
   LineChart,
   Line,
@@ -48,9 +49,18 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
 }
 
 export function ProfitPercentChart({ data, loading }: ProfitPercentChartProps) {
+  const titleId = useId()
+  const descriptionId = useId()
+  const summaryId = useId()
+
   if (loading) {
     return (
-      <Card className="border-border/60">
+      <Card
+        className="border-border/60"
+        role="status"
+        aria-live="polite"
+        aria-label="Loading profit margin chart"
+      >
         <CardHeader className="pb-4">
           <Skeleton className="h-5 w-52" />
           <Skeleton className="h-3 w-64 mt-1" />
@@ -65,14 +75,28 @@ export function ProfitPercentChart({ data, loading }: ProfitPercentChartProps) {
   const hasData = data.some((d) => d.profitPercent !== 0)
 
   return (
-    <Card className="border-border/60">
+    <Card
+      className="border-border/60"
+      role="region"
+      aria-labelledby={titleId}
+      aria-describedby={`${descriptionId} ${summaryId}`}
+    >
       <CardHeader className="pb-4">
-        <CardTitle className="text-base font-semibold">Profit Margin %</CardTitle>
-        <CardDescription>Monthly profit as a percentage of total income</CardDescription>
+        <CardTitle id={titleId} className="text-base font-semibold">
+          Profit Margin %
+        </CardTitle>
+        <CardDescription id={descriptionId}>Monthly profit as a percentage of total income</CardDescription>
       </CardHeader>
       <CardContent>
+        <p id={summaryId} className="sr-only">
+          Line chart showing monthly profit margin percentage across the available period.
+        </p>
         {!hasData ? (
-          <div className="flex h-[280px] items-center justify-center text-muted-foreground text-sm">
+          <div
+            className="flex h-[280px] items-center justify-center text-muted-foreground text-sm"
+            role="status"
+            aria-live="polite"
+          >
             No data available to display
           </div>
         ) : (
