@@ -1,57 +1,57 @@
-# Documentation Rules
+# Reglas de documentación
 
-## Purpose
+## Propósito
 
-Keep project documentation accurate, phase-aligned, and consistent with implemented behavior.
+Mantener la documentación del proyecto precisa, alineada por fase y consistente con el comportamiento implementado.
 
-## Rules
+## Reglas
 
-1. Update both README versions when public commands, URLs, stack summary, or API capabilities change.
-- Applies to: `README.md`, `README.es.md`.
-- Do: keep both files aligned in scope and behavior.
-- Validate: command and URL sections match across both files.
+1. Actualizar ambas versiones de README cuando cambien comandos públicos, URLs, resumen del stack o capacidades API.
+- Aplica a: `README.md`, `README.es.md`.
+- Hacer: mantener ambos archivos alineados en alcance y comportamiento.
+- Validar: las secciones de comandos y URLs coinciden en ambos archivos.
 
-2. Keep English and Spanish README content consistent without requiring literal translation.
-- Applies to: `README.md`, `README.es.md`.
-- Do: preserve equivalent technical meaning and coverage.
-- Validate: both describe the same implemented features and limitations.
+2. Mantener consistencia entre README en inglés y español sin exigir traducción literal.
+- Aplica a: `README.md`, `README.es.md`.
+- Hacer: preservar significado técnico y cobertura equivalentes.
+- Validar: ambos describen las mismas funcionalidades implementadas y limitaciones.
 
-3. Update `context.md` when verified handover scope changes.
-- Applies to: `context.md`.
-- Do: revise operational status, implemented scope, and boundaries only from evidence.
-- Validate: each major claim maps to existing files or executed commands.
+3. Actualizar `context.md` cuando cambie el alcance de handover verificado.
+- Aplica a: `context.md`.
+- Hacer: revisar estado operativo, alcance implementado y límites solo con base en evidencia.
+- Validar: cada afirmación principal se mapea a archivos existentes o comandos ejecutados.
 
-4. Update `design.md` when implemented KPIs, charts, UI states, or dashboard layout structure changes.
-- Applies to: `design.md`, `frontend/src/App.tsx`, `frontend/src/components/dashboard/`, `frontend/src/lib/financial-utils.ts`.
-- Do: document current behavior only.
-- Validate: formulas and components in `design.md` match frontend source.
+4. Actualizar `design.md` cuando cambien KPIs, gráficos, estados UI o estructura de layout del dashboard implementados.
+- Aplica a: `design.md`, `frontend/src/App.tsx`, `frontend/src/components/dashboard/`, `frontend/src/lib/financial-utils.ts`.
+- Hacer: documentar solo comportamiento actual.
+- Validar: fórmulas y componentes en `design.md` coinciden con el código frontend.
 
-5. Update `engineering-analysis.md` only after a new evidence-based review cycle.
-- Applies to: `engineering-analysis.md`.
-- Do: include inspected files, executed validations, and classified findings.
-- Validate: document contains concrete evidence paths and command outcomes.
+5. Actualizar `engineering-analysis.md` solo después de un nuevo ciclo de revisión basado en evidencia.
+- Aplica a: `engineering-analysis.md`.
+- Hacer: incluir archivos inspeccionados, validaciones ejecutadas y hallazgos clasificados.
+- Validar: el documento contiene rutas de evidencia concretas y resultados de comandos.
 
-6. Do not document features before implementation.
-- Applies to: all root markdown documentation.
-- Do: avoid future-state statements presented as current behavior.
-- Validate: every feature claim is traceable to source files.
+6. No documentar funcionalidades antes de su implementación.
+- Aplica a: toda la documentación markdown de raíz.
+- Hacer: evitar afirmaciones de estado futuro presentadas como comportamiento actual.
+- Validar: cada afirmación de funcionalidad es trazable a archivos fuente.
 
-7. Distinguish simulated data from real financial data in all public documentation.
-- Applies to: `README.md`, `README.es.md`, `context.md`, `engineering-analysis.md`, `design.md`.
-- Do: explicitly label mock data workflows.
-- Validate: docs do not imply production data integration when absent.
+7. Distinguir datos simulados de datos financieros reales en toda la documentación pública.
+- Aplica a: `README.md`, `README.es.md`, `context.md`, `engineering-analysis.md`, `design.md`.
+- Hacer: etiquetar explícitamente los flujos con datos mock.
+- Validar: la documentación no implica integración de datos productivos cuando no existe.
 
-8. Use verifiable commands and repository-valid paths in documentation.
-- Applies to: all markdown docs.
-- Do: include commands that exist in project scripts/configuration and paths that exist in repository.
-- Validate: command and path checks succeed during documentation review.
+8. Usar comandos verificables y rutas válidas del repositorio en documentación.
+- Aplica a: todos los docs markdown.
+- Hacer: incluir comandos que existan en scripts/configuración del proyecto y rutas existentes en el repositorio.
+- Validar: verificaciones de comandos y rutas exitosas durante revisión documental.
 
-9. Avoid full-section duplication across documentation files.
-- Applies to: `README.md`, `README.es.md`, `context.md`, `engineering-analysis.md`, `design.md`.
-- Do: keep README as onboarding, context as baseline state, engineering-analysis as practices/risks, design as functional/visual behavior.
-- Validate: each file preserves its purpose without copying large blocks from another.
+9. Evitar duplicación de secciones completas entre archivos de documentación.
+- Aplica a: `README.md`, `README.es.md`, `context.md`, `engineering-analysis.md`, `design.md`.
+- Hacer: mantener README como onboarding, context como línea base de estado, engineering-analysis como prácticas/riesgos y design como comportamiento funcional/visual.
+- Validar: cada archivo preserva su propósito sin copiar grandes bloques de otro.
 
-10. Keep relative links valid after documentation edits.
-- Applies to: all markdown docs with internal links.
-- Do: verify linked files exist.
-- Validate: link targets resolve in repository structure.
+10. Mantener enlaces relativos válidos tras editar documentación.
+- Aplica a: todos los docs markdown con enlaces internos.
+- Hacer: verificar que existan los archivos enlazados.
+- Validar: los destinos de enlaces resuelven dentro de la estructura del repositorio.
