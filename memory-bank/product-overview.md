@@ -1,12 +1,12 @@
 # Product Overview
 
-## Purpose
+## Propósito
 
-This file keeps a stable and compact description of what the product is today, so future contributors and agents can recover context quickly without re-reading the full repository.
+Este archivo mantiene una descripción estable y compacta de lo que es hoy el producto, para que futuros contribuidores y agentes recuperen contexto rápidamente sin releer todo el repositorio.
 
-## Current Product
+## Producto actual
 
-The current product is a financial dashboard composed of:
+El producto actual es un dashboard financiero compuesto por:
 
 - React frontend.
 - FastAPI backend.
@@ -15,48 +15,48 @@ The current product is a financial dashboard composed of:
 - Simulated financial data (mock).
 - Local execution with Docker Compose.
 
-## Current Capabilities
+## Capacidades actuales
 
-Implemented capabilities observed in code:
+Capacidades implementadas observadas en código:
 
-- Retrieve simulated financial movements through `GET /api/metrics`.
-- Filter movements in API by `start_date`, `end_date`, `category`, and `operation_type`.
-- Retrieve segmented metrics for B2B and B2C (`/api/metrics/b2b`, `/api/metrics/b2c`).
-- Retrieve filter facets (`/api/metrics/facets`).
-- Retrieve summaries grouped by day/week/month (`/api/metrics/summary`).
-- Retrieve top categories (`/api/metrics/categories/top`).
-- Retrieve period comparison (`/api/metrics/comparison`).
-- Retrieve anomaly alerts (`/api/metrics/alerts`).
-- Display frontend KPI cards and charts based on `/api/metrics` response.
+- Obtener movimientos financieros simulados mediante `GET /api/metrics`.
+- Filtrar movimientos en API por `start_date`, `end_date`, `category` y `operation_type`.
+- Obtener métricas segmentadas para B2B y B2C (`/api/metrics/b2b`, `/api/metrics/b2c`).
+- Obtener facetas de filtros (`/api/metrics/facets`).
+- Obtener resúmenes agrupados por día/semana/mes (`/api/metrics/summary`).
+- Obtener top de categorías (`/api/metrics/categories/top`).
+- Obtener comparación de períodos (`/api/metrics/comparison`).
+- Obtener alertas de anomalías (`/api/metrics/alerts`).
+- Mostrar tarjetas KPI y gráficos frontend basados en la respuesta de `/api/metrics`.
 
-Note: several capabilities above are API-level only and do not currently have visible filter controls in the UI.
+Nota: varias capacidades anteriores son solo de nivel API y actualmente no tienen controles de filtro visibles en la UI.
 
-## User-Visible Information
+## Información visible para usuario
 
-Current visible dashboard information:
+Información actualmente visible en el dashboard:
 
 - Header with dashboard title and period badge.
 - KPI cards: total income, total outcome, profit, profit margin.
 - Income vs outcome chart.
 - Profit margin chart.
 - Loading state with skeleton placeholders.
-- Error message when data fetch fails.
+- Mensaje de error cuando falla la carga de datos.
 
-## Data Source
+## Fuente de datos
 
-- Data is simulated in backend code.
-- Movement generation uses a reproducible seed (`seed=42`) in endpoint flows.
-- No database is connected.
-- No external financial provider integration is present.
-- No persistence layer is implemented.
+- Los datos son simulados en código backend.
+- La generación de movimientos usa una semilla reproducible (`seed=42`) en los flujos de endpoints.
+- No hay base de datos conectada.
+- No existe integración con proveedores financieros externos.
+- No hay capa de persistencia implementada.
 
-## Current Scope Boundaries
+## Límites de alcance actuales
 
-The project is currently scoped as an academic handover exercise with local Docker-based execution, simulated financial inputs, and documentation-driven phase progression.
+El proyecto está actualmente acotado como un ejercicio académico de handover con ejecución local basada en Docker, entradas financieras simuladas y progresión por fases guiada por documentación.
 
-## Explicitly Not Implemented
+## Explícitamente no implementado
 
-Verified as not implemented in current repository scope:
+Verificado como no implementado en el alcance actual del repositorio:
 
 - Authentication/authorization.
 - Real persistence/database storage.
@@ -64,7 +64,7 @@ Verified as not implemented in current repository scope:
 - Production deployment workflow in repository.
 - Visible CI/CD workflow files in repository.
 
-## Main Product Flow
+## Flujo principal del producto
 
 ```text
 Browser
@@ -72,13 +72,13 @@ Browser
 → /api/metrics
 → Vite proxy
 → FastAPI
-→ simulated movements
+→ movimientos simulados
 → JSON response
-→ frontend calculations
+→ cálculos frontend
 → KPI cards and charts
 ```
 
-## Related Documents
+## Documentos relacionados
 
 - [README.md](../README.md)
 - [README.es.md](../README.es.md)
@@ -86,6 +86,6 @@ Browser
 - [design.md](../design.md)
 - [engineering-analysis.md](../engineering-analysis.md)
 
-## Maintenance Notes
+## Notas de mantenimiento
 
-Update this file when product-visible behavior changes, when API capabilities are added/removed, or when scope boundaries are redefined in future phases.
+Actualizar este archivo cuando cambie el comportamiento visible del producto, cuando se agreguen/remuevan capacidades API o cuando se redefinan los límites de alcance en fases futuras.
